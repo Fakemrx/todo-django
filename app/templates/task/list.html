@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block titlename %}
+    ToDoApp - Organize Your Tasks
+{% endblock %}
+{% block bodydata %}
+    <div class="text-center">
+        <a href="{% url 'task:create_task' %}" >
+            <button class="btn border-success btn-dark btn-sm mt-4 mb-3 col-4 btn-lg" style="font-size: 1.5rem;">
+                New Task
+            </button>
+        </a>
+    </div>
+    {% for task in object_list %}
+    <div class="card text-bg-dark border-{% if task.status == 'danger' or task.status == 'warning' %}{{ task.status }}{% else %}{% if task.is_complete %}success{% else %}light{% endif %}{% endif %} mt-3">
+        <div class="card-header {% if task.is_complete %}bg-success{% else %}bg-{{ task.status }}{% endif %}">
+            <b>{{ task.title }}{% if task.is_complete %} | Complete {% endif %}</b>
+        </div>
+        <div class="card-body d-flex flex-column align-tasks-start">
+            <p class="card-text mb-0">{{ task.description }}</p>
+            <div class="d-flex justify-content-between mt-3">
+                <form method="post" action="{% url 'task:task_action' action='complete' task_id=task.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn {% if task.is_complete %}btn-warning{% else %}btn-success{% endif %} btn-sm">{% if task.is_complete %}Renew{% else %}Complete{% endif %}</button>
+                </form>
+                <form method="post" action="{% url 'task:task_action' action='delete' task_id=task.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                </form>
+            </div>
+        </div>
+        <div class="card-footer text-body-dark text-center {% if task.is_complete %}bg-success{% else %}bg-{{ task.status }}{% endif %}">
+            {% if task.remaining_time %}Should be complete in: {{ task.remaining_time }}{% else %}Not complete in time{% endif %}
+        </div>
+    </div>
+    {% endfor %}
+{% endblock %}
