@@ -18,20 +18,17 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
       </ul>
-      <form action="{% if user.is_authenticated %}{{ logout }}{% else %}{{ login }}{% endif %}" class="d-flex">
-        <button class="btn {% if user.is_authenticated %}btn-danger{% else %}btn-success{% endif %} btn-outline-light mx-2 ">
+        <a href="{% if user.is_authenticated %}{{ logout }}{% else %}{{ login }}{% endif %}"><button class="btn {% if user.is_authenticated %}btn-danger{% else %}btn-success{% endif %} btn-outline-light mx-2 ">
             {% if user.is_authenticated %}LOG OUT{% else %}LOG IN{% endif %}
-        </button>
-      </form>
+        </button></a>
       {% if not user.is_authenticated %}
-      <form action="{{ reg }}" class="d-flex">
-            {% if user.is_authenticated %}
-            {% else %}
+            {% if not user.is_authenticated %}
+                <a href="{{ reg }}">
                 <button class="btn btn-outline-light">
                     SIGN UP
                 </button>
+                </a>
             {% endif %}
-      </form>
       {% endif %}
     </div>
   </div>
