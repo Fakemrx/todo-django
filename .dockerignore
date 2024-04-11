@@ -1,0 +1,19 @@
+__pycache__/
+.mypy_cache/
+.pytest_cache/
+
+# Git
+.git/
+pre-commit-config.yaml
+.gitignore
+
+# JetBrains
+.idea/
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# DB
+app/db.sqlite3

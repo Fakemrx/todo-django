@@ -1,0 +1,12 @@
+<div class="row">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+        <form class="mt-4" method="POST" action="{{ action }}" enctype="multipart/form-data">{% csrf_token %}
+            {{ form.as_p }}
+            <div class="text-center">
+            <input type="submit" class="btn btn-success" value="{{ action_name }}">
+            </div>
+        </form>
+        </div>
+    <div class="col-sm-3"></div>
+</div>

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block titlename %}
+    ToDoApp - Organize Your Tasks
+{% endblock %}
+{% block bodydata %}
+    {% load static %}
+    <div class="text-center">
+
+  <section class="container my-5">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="text-center mb-4">
+          <img src="{% static 'image1.jpg' %}" alt="Feature 1" class="img-fluid rounded-circle" style="max-width: 200px;">
+        </div>
+        <h2 class="text-center">Easy to Use</h2>
+        <p>ToDoApp offers a simple and intuitive interface, making it effortless to manage your tasks.</p>
+      </div>
+      <div class="col-md-4">
+        <div class="text-center mb-4">
+          <img src="{% static 'image2.jpg' %}" alt="Feature 2" class="img-fluid rounded-circle" style="max-width: 200px;">
+        </div>
+        <h2 class="text-center">Customizable</h2>
+        <p>Customize ToDoApp to fit your workflow. Add categories, tags, due dates, and more.</p>
+      </div>
+      <div class="col-md-4">
+        <div class="text-center mb-4">
+          <img src="{% static 'image3.jpg' %}" alt="Feature 3" class="img-fluid rounded-circle" style="max-width: 200px;">
+        </div>
+        <h2 class="text-center">Access Anywhere</h2>
+        <p>Access your tasks from anywhere, whether you're at home, work, or on the go.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-dark text-success py-4">
+    <div class="container">
+      <h2>Improve yourself today to become better tomorrow.</h2>
+    </div>
+  </footer>
+    </div>
+{% endblock %}
