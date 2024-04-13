@@ -14,36 +14,43 @@
 <nav class="navbar bg-dark navbar-expand-lg border-bottom border-body" data-bs-theme="dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="{{ home }}">ToDoApp</a>
-    {% if user.is_authenticated %}<a class="navbar-brand text-success" href="{{ task_list }}" aria-disabled="true">Tasks</a>{% endif %}
+    {% if user.is_authenticated %}
+      <a class="navbar-brand text-success" href="{{ task_list }}" aria-disabled="true">Tasks</a>
+    {% endif %}
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
       </ul>
-        <a href="{% if user.is_authenticated %}{{ logout }}{% else %}{{ login }}{% endif %}"><button class="btn {% if user.is_authenticated %}btn-danger{% else %}btn-success{% endif %} btn-outline-light mx-2 ">
-            {% if user.is_authenticated %}LOG OUT{% else %}LOG IN{% endif %}
-        </button></a>
+    </div>
+    <div class="d-flex">
+      <a href="{% if user.is_authenticated %}{{ logout }}{% else %}{{ login }}{% endif %}">
+        <button class="btn {% if user.is_authenticated %}btn-danger{% else %}btn-success{% endif %} btn-outline-light mx-2">
+          {% if user.is_authenticated %}LOG OUT{% else %}LOG IN{% endif %}
+        </button>
+      </a>
       {% if not user.is_authenticated %}
-            {% if not user.is_authenticated %}
-                <a href="{{ reg }}">
-                <button class="btn btn-outline-light">
-                    SIGN UP
-                </button>
-                </a>
-            {% endif %}
+        <a href="{{ reg }}">
+          <button class="btn btn-outline-light">
+            SIGN UP
+          </button>
+        </a>
       {% endif %}
     </div>
   </div>
 </nav>
-<div class="container">
-  <div class="row">
-    <div class="col-sm-2"></div>
-    <div class="col-sm-8">
-        <header class="bg-success text-light text-center py-5">
+
+<header class="bg-success text-light text-center py-5">
     <div class="container">
       <h1>ToDoApp</h1>
       <p class="lead">An easy way to organize your tasks</p>
     </div>
   </header>
-        {% block bodydata %}{% endblock %}
+{% block bodydata %}{% endblock %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+    {% block formdata %}{% endblock %}
     </div>
     <div class="col-sm-2"></div>
   </div>
